@@ -1,0 +1,115 @@
+[gd_scene load_steps=19 format=3 uid="uid://de8l8bu1bca56"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_dfv5b"]
+[ext_resource type="Texture2D" uid="uid://dwo6n0kjht1p3" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/spritesheets/player.png" id="1_nmii4"]
+[ext_resource type="Texture2D" uid="uid://nq7gr3ddbsii" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/jump/player-jump-1.png" id="2_stu0g"]
+[ext_resource type="Texture2D" uid="uid://dtleittf8s5is" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/jump/player-jump-2.png" id="3_4crru"]
+[ext_resource type="Texture2D" uid="uid://b4vocoeietcaf" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/run/player-run-1.png" id="4_iecf0"]
+[ext_resource type="Texture2D" uid="uid://copm0fqwpxgfv" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/run/player-run-2.png" id="5_m6rp5"]
+[ext_resource type="Texture2D" uid="uid://l0o42fno0c6h" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/run/player-run-3.png" id="6_hv3j5"]
+[ext_resource type="Texture2D" uid="uid://ba5p4hojvt4dr" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/run/player-run-4.png" id="7_p32be"]
+[ext_resource type="Texture2D" uid="uid://dddd1tmv6h2cw" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/run/player-run-5.png" id="8_nthsd"]
+[ext_resource type="Texture2D" uid="uid://epoqvoylqw7a" path="res://Sunny Land Collection Files/Assets/Packs/Sunnyland/sprites/player/run/player-run-6.png" id="9_5qrlj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_elw2v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur65a"]
+atlas = ExtResource("1_nmii4")
+region = Rect2(0, 128, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0nq1"]
+atlas = ExtResource("1_nmii4")
+region = Rect2(33, 128, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1qce"]
+atlas = ExtResource("1_nmii4")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpf1h"]
+atlas = ExtResource("1_nmii4")
+region = Rect2(33, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spmge"]
+atlas = ExtResource("1_nmii4")
+region = Rect2(66, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n06jq"]
+atlas = ExtResource("1_nmii4")
+region = Rect2(99, 0, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tu4qo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur65a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0nq1")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1qce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpf1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spmge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n06jq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_stu0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4crru")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_iecf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m6rp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hv3j5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p32be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nthsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qrlj")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dfv5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_elw2v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+scale = Vector2(1.25758, 1.25)
+sprite_frames = SubResource("SpriteFrames_tu4qo")
+animation = &"Idle"
